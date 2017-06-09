@@ -252,11 +252,17 @@ class TkPlanet(Planet):
 if IPython:
     b = TkPlanet(0, Vector(0,0,0), Vector(0,0,0), '', '', 0)
 
+# Test
+
     assert isinstance(b, Planet)
     assert isinstance(b, TkPlanet)
 
+# Test
+
     assert b.size() == 0
     assert b.graphic() is None
+
+# Test
 
     b.set_graphic(0)
     assert b.graphic() == 0
@@ -264,7 +270,11 @@ if IPython:
 if IPython:
     bodies = read_bodies('solarsystem.txt', TkPlanet)
 
+# Test
+
     assert isinstance(bodies[0], TkPlanet)
+
+# Test
 
     assert bodies[0].name() == 'sun'
     assert bodies[0].size() == 10
@@ -355,10 +365,14 @@ if IPython:
     canvas.pack()
     bodies = read_bodies('solarsystem.txt', TkPlanet)
 
+# Test
+
 if IPython:
     canvas.set_planets(bodies)
     canvas.view_planets(2)
     assert [canvas.type(x) for x in canvas.find_all()].count('oval') == 2
+
+# Test
 
 if IPython:
     for i in range(10):
@@ -394,17 +408,23 @@ if IPython:
     vb = Viewbox(tk.Tk(), vb_cb)
     vb.pack()
 
+# Test
+
 if IPython:
     called = False
     vb.invoke('buttondown')
     vb.invoke('buttonup')
     assert not called
 
+# Test
+
 if IPython:
     vb.set_limit(5)
     assert vb.get() == '5'
     assert vb['from'] == 2
     assert vb['to'] == 5
+
+# Test
 
 if IPython:
     called = False
@@ -486,6 +506,8 @@ if IPython:
     rf = RunFrame(tk.Tk(), rf_cb)
     rf.pack()
 
+# Test
+
 if IPython:
     counts = { }
     for x in rf.children.values():
@@ -497,12 +519,16 @@ if IPython:
     assert rf._dt_entry.get() == '86459'
     assert rf._nsteps_entry.get() == '365'
 
+# Test
+
 if IPython:
     calls = 0
     rf.enable_button()
     rf._run_button.invoke()
     rf._run_button.invoke()
     assert calls == 2
+
+# Test
 
 if IPython:
     rf._dt_entry.delete(0, tk.END)
@@ -511,6 +537,8 @@ if IPython:
     rf._nsteps_entry.delete(0, tk.END)
     rf._nsteps_entry.insert(0, '1000')
     assert rf.nsteps() == 1000
+
+# Test
 
 if IPython:
     rf.init_progress(100)
